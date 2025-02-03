@@ -35,10 +35,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-	// JWT DEPENDENCIES
-	implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
-	implementation group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
-	implementation group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-api:0.12.1'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.1'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.1'
 
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 

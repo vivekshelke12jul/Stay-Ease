@@ -1,0 +1,9 @@
+package com.crio.starEasy.repository;
+
+import com.crio.starEasy.model.Hotel;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface HotelRepository extends JpaRepository<Hotel, Integer> {
+}
