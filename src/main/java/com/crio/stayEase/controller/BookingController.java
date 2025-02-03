@@ -18,11 +18,11 @@ public class BookingController {
             @PathVariable Integer hotelId,
             @RequestBody BookingRequest request,
             @RequestHeader("Authorization") String jwt
-    ) {
-        return bookingService.bookRoom(jwt, hotelId,request);
+    ) throws Exception{
+        return bookingService.bookRoom(jwt, hotelId, request);
     }
 
-    @PreAuthorize("hasRole('HOTEL_MANAGER')")
+    @PreAuthorize("hasAuthority('HOTEL_MANAGER')")
     @DeleteMapping("/booking/{bookingId}")
     public void cancelBooking(@PathVariable Integer bookingId) {
         bookingService.cancelBooking(bookingId);

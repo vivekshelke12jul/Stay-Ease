@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HotelServiceImpl implements HotelService {
@@ -40,11 +41,17 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public Hotel getHotel(Integer hotelId) {
-        return hotelRepository.findById(hotelId)
-                .orElseThrow(() ->
-                        new ResponseStatusException(HttpStatus.NOT_FOUND, "Hotel not found with id:"+ hotelId)
-                );
+    public Hotel getHotel(Integer hotelId) throws ResponseStatusException {
+        Optional<Hotel> hotel = hotelRepository.findById(hotelId);
+        if(hotel.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Hotel not found with id:"+ hotelId);
+        }
+        return hotel.get();
+
+//        return
+//                .orElseThrow(() ->
+//                        new ResponseStatusException(HttpStatus.NOT_FOUND, "Hotel not found with id:"+ hotelId)
+//                );
     }
 
     @Override

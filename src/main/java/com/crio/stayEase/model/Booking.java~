@@ -32,11 +32,4 @@ public class Booking {
         this.startDate = startDate;
         this.endDate = endDate;
     }
-
-    public Booking(Booking booking){
-        this.hotel = booking.getHotel();
-        this.user = booking.getUser();
-        this.startDate = booking.getStartDate();
-        this.endDate = booking.getEndDate();
-    }
 }

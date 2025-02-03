@@ -1,8 +1,8 @@
 package com.crio.stayEase.service;
 
+import com.crio.stayEase.model.User;
 import com.crio.stayEase.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,11 +23,12 @@ public class UserService implements UserDetailsService {
         if(user == null) {
             throw new UsernameNotFoundException("User not found");
         }
-        return new User(user.getUsername(), user.getPassword(), user.getAuthorities());
+        return user;
     }
 
-    public UserDetails getUserfromToken(String jwt) {
+    public User getUserfromToken(String jwt) {
+        jwt = jwt.substring(7);
         String userName = jwtService.extractUserName(jwt);
-        return loadUserByUsername(userName);
+        return (User)loadUserByUsername(userName);
     }
 }

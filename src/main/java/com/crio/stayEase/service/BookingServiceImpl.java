@@ -26,7 +26,7 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public Booking bookRoom(String jwt, Integer hotelId, BookingRequest request) {
 
-        User user = (User) userService.getUserfromToken(jwt);
+        User user = userService.getUserfromToken(jwt);
 
         Hotel hotel = hotelService.getHotel(hotelId);
         if(hotel.getAvailableRooms() == 0){
